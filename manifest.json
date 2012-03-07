@@ -21,8 +21,6 @@
   },
   "permissions": [
     "tabs",
-    "http://202.119.83.14/*",
-    "http://book.360buy.com/*",
-    "http://www.amazon.cn/*"
+    "http://202.119.83.14/*"
 ]
 }
