@@ -1,1 +1,9 @@
-﻿
+﻿.njustlib_360buy {
+float: right;
+width: 468px;
+border: 1px solid #EED97C;
+background: #FFFCEB;
+color: #666;
+overflow: visible;
+border-image: initial;
+}

@@ -17,10 +17,16 @@ function addInfo(TYPE) {
             $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
             break;
         case 'amazon':
-            $('.bucket').before('<div class="cBoxInner" id="njustlib"></div>');//#buyboxDivId
+            $('.bucket').before('<div class="cBoxInner" id="njustlib"></div>'); //#buyboxDivId
             $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
             break;
         case 'dangdang':
+            $('.property').before('<div class="property" id="njustlib"></div>');
+            $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
+            break;
+        case '360buy':
+            $('#choose').before('<div id="njustlib" class="njustlib_360buy"></div>');
+            $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
             break;
         default:
     }
@@ -46,7 +52,7 @@ function getSearchInfo(isbn, school) {
 
             if (data.indexOf('本馆没有您检索的馆藏书目') != -1) {
                 $('#isex').html('竟然没有！<br />图书馆的书太少啦！');
-                var url_full = "http://202.119.83.14:8080/opac/openlink.php?strSearchType=title&historyCount=1&strText="+ bookTitle+"&x=16&y=14&doctype=ALL&match_flag=forward&displaypg=20&sort=CATA_DATE&orderby=desc&showmode=list&dept=ALL"
+                var url_full = "http://202.119.83.14:8080/opac/openlink.php?strSearchType=title&historyCount=1&strText=" + bookTitle + "&x=16&y=14&doctype=ALL&match_flag=forward&displaypg=20&sort=CATA_DATE&orderby=desc&showmode=list&dept=ALL"
                 $('#njustlib').append('<br /><h2>走，去图书馆搜搜类似的书</h2><p><div class="bs" id="mdt"><a href="' + url_full + '" target="_blank">点我哟！</a></div>');
             } else {
                 var $search_page = $(data);
@@ -123,6 +129,13 @@ function getIsbn() {
             bookTitle = bookTitle.split(' [')[0];
             break;
         case 'dangdang':
+            //            var items = $('.book_detailed .clearfix li:eq(2)').text(); //
+            //            alert(items);
+            isbn = $('.book_detailed .clearfix li:eq(2) span:eq(1)').text().substring(8);
+            break;
+        case '360buy':
+            isbn = $("#summary li:eq(3)").text().substring(5);
+//            alert(items);
             break;
         default:
     }
@@ -131,5 +144,10 @@ function getIsbn() {
 
 function getType() {
     var domain = document.domain;
-    return domain.split(".")[1];
+    var names = ["amazon", "douban", "360buy", "dangdang"];
+    for (var i in names) {
+        if (domain.indexOf(names[i]) != -1)
+            return names[i];
+    }
+    //    return domain.split(".")[1];
 }

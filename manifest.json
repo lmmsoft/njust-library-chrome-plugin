@@ -7,7 +7,7 @@
   "content_scripts": [ {
       "css": [ "inject.css" ],
       "js": [ "jquery.js" , "inject.js" ],
-      "matches": ["http://book.douban.com/*","http://www.amazon.cn/*"],
+      "matches": ["http://book.douban.com/*","http://www.amazon.cn/*","http://product.dangdang.com/*","http://book.360buy.com/*"],
       "run_at": "document_end"
    } ],
   "browser_action": {
