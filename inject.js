@@ -1,7 +1,4 @@
-﻿$('.book-cart-app-notice').before('<div class="gray_ad" id="njustlib"></div>');
-$('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
-
-TYPE = getType(); //douban | amazon
+﻿TYPE = getType(); //douban | amazon
 
 var BASEURL = "http://202.119.83.14:8080/opac/";
 
@@ -13,12 +10,31 @@ var school = "njust";
 getSearchInfo(isbn, school);
 
 
+function addInfo(TYPE) {
+    switch (TYPE) {
+        case 'douban':
+            $('.book-cart-app-notice').before('<div class="gray_ad" id="njustlib"></div>');
+            $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
+            break;
+        case 'amazon':
+            $('.bucket').before('<div class="cBoxInner" id="njustlib"></div>');//#buyboxDivId
+            $('#njustlib').append('<h2>南理工图书馆有没有?</h2><div class="bs" id="isex"></div>');
+            break;
+        case 'dangdang':
+            break;
+        default:
+    }
+
+}
+
 //抓取搜索图书页面
 function getSearchInfo(isbn, school) {
     if (!isbn) {
         $('#isex').html('竟然没有！');
         return;
     }
+    addInfo(TYPE);
+
     var url = "http://202.119.83.14:8080/opac/openlink.php?strSearchType=isbn&historyCount=1&strText=" + isbn + "&x=0&y=0&doctype=ALL&match_flag=forward&displaypg=20&sort=CATA_DATE&orderby=desc&showmode=list&dept=ALL";
     $.ajax({
         //type: 'GET',

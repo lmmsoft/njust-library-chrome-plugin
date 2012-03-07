@@ -1,13 +1,13 @@
 ﻿{
   "update_url":"http://clients2.google.com/service/update2/crx",
-  "name": "南理工图书馆豆瓣插件",
-  "version": "1.0",
+  "name": "南理工图书馆插件",
+  "version": "1.2",
   "description": "查看豆瓣上图书在南理工图书馆借阅情况",
   "background_page": "background.html",
   "content_scripts": [ {
       "css": [ "inject.css" ],
       "js": [ "jquery.js" , "inject.js" ],
-      "matches": [ "http://book.douban.com/*" ],
+      "matches": ["http://book.douban.com/*","http://www.amazon.cn/*"],
       "run_at": "document_end"
    } ],
   "browser_action": {
@@ -21,6 +21,8 @@
   },
   "permissions": [
     "tabs",
-    "http://202.119.83.14/*"
+    "http://202.119.83.14/*",
+    "http://book.360buy.com/*",
+    "http://www.amazon.cn/*"
 ]
 }
