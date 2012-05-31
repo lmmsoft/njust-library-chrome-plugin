@@ -1,6 +1,6 @@
 ﻿{
   "update_url":"http://clients2.google.com/service/update2/crx",
-  "name": "南理工图书馆插件",
+  "name": "南理工图书馆chrome插件",
   "version": "2.0",
   "description": "查看豆瓣、京东、亚马逊、当当网的图书在南理工图书馆借阅情况",
   "background_page": "background.html",

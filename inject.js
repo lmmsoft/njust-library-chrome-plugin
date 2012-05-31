@@ -1,4 +1,11 @@
-﻿TYPE = getType(); //douban | amazon
+﻿// Copyright (c) 2012, lmmsoft@126.com 
+// Released under the GPL license
+// http://www.gnu.org/copyleft/gpl.html
+// --------------------------------------------------------------------
+// version 2.0
+// -------------------------------------------------------------------
+
+TYPE = getType(); //douban | amazon
 
 var BASEURL = "http://202.119.83.14:8080/opac/";
 
